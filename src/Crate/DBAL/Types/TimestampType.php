@@ -69,12 +69,12 @@ class TimestampType extends Type
     /**
      * Gets the SQL declaration snippet for a field of this type.
      *
-     * @return string
-     * @param  array            $fieldDeclaration The field declaration.
+     * @param array<int, mixed> $column The field declaration.
      * @param  AbstractPlatform $platform         The currently used database platform.
+     *@return string
      */
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
     {
-        return $platform->getDateTimeTypeDeclarationSQL($fieldDeclaration);
+        return $platform->getDateTimeTypeDeclarationSQL($column);
     }
 }

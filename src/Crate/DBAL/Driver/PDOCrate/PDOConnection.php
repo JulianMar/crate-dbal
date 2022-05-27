@@ -31,7 +31,7 @@ class PDOConnection extends PDO implements ServerInfoAwareConnection
      * @param string $dsn
      * @param string $user
      * @param string $password
-     * @param array $options
+     * @param array<int, string> $options
      */
     public function __construct($dsn, $user = null, $password = null, array $options = null)
     {

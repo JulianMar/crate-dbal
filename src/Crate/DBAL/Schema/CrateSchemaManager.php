@@ -106,7 +106,9 @@ class CrateSchemaManager extends AbstractSchemaManager
      * Flattens a multidimensional array into a 1 dimensional array, where
      * keys are concatinated with '.'
      *
-     * @return array
+     * @param array<int|string, mixed> $array
+     *
+     * @return array<string, mixed>
      */
     private function flatten(array $array, string $prefix = '') : array
     {

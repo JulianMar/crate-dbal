@@ -48,6 +48,8 @@ class Driver implements \Doctrine\DBAL\Driver, VersionAwarePlatformDriver
     /**
      * Constructs the Crate PDO DSN.
      *
+     * @param array<string, string> $params
+     *
      * @return string The DSN.
      */
     private function constructPdoDsn(array $params)

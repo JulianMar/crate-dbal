@@ -79,23 +79,24 @@ class MapType extends Type
     /**
      * Gets the SQL declaration snippet for a field of this type.
      *
-     * @param array $fieldDeclaration The field declaration.
+     * @param array<string, mixed> $column The field declaration.
      * @param AbstractPlatform $platform The currently used database platform.
      * @return string
      * @throws \Doctrine\DBAL\DBALException
      */
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
     {
-        $options = !array_key_exists('platformOptions', $fieldDeclaration) ?
-            array() : $fieldDeclaration['platformOptions'];
+        $options = !array_key_exists('platformOptions', $column) ?
+            array() : $column['platformOptions'];
 
-        return $this->getMapTypeDeclarationSQL($platform, $fieldDeclaration, $options);
+        return $this->getMapTypeDeclarationSQL($platform, $column, $options);
     }
 
     /**
      * Gets the SQL snippet used to declare an OBJECT column type.
      *
-     * @param array $field
+     * @param array<string, mixed> $field
+     * @param array<string, mixed> $options
      *
      * @return string
      * @throws \Doctrine\DBAL\DBALException

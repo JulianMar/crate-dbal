@@ -199,7 +199,7 @@ class CratePlatform extends AbstractPlatform
     /**
      * {@inheritDoc}
      */
-    public function getListTableConstraintsSQL($table, $database = null)
+    public function getListTableConstraintsSQL($table)
     {
         return "SELECT c.constraint_name, c.constraint_type " .
                "FROM information_schema.table_constraints c " .
@@ -217,6 +217,12 @@ class CratePlatform extends AbstractPlatform
                "WHERE " . $this->getTableWhereClause($table);
     }
 
+    /**
+     * @param string $table
+     * @param string $tableAlias
+     *
+     * @return string
+     */
     private function getTableWhereClause($table, $tableAlias = 'c')
     {
         if (strpos($table, '.') !== false) {
@@ -586,7 +592,7 @@ class CratePlatform extends AbstractPlatform
      * @param Table $table The name of the table.
      * @param integer $createFlags
      *
-     * @return array The sequence of SQL statements.
+     * @return array<string, string> The sequence of SQL statements.
      */
     public function getCreateTableSQL(Table $table, $createFlags = self::CREATE_INDEXES)
     {
@@ -774,9 +780,9 @@ class CratePlatform extends AbstractPlatform
 
     /**
      * @param \Doctrine\DBAL\Schema\Column $column The name of the table.
-     * @param array $primaries List of primary key column names
+     * @param array<int, string> $primaries List of primary key column names
      *
-     * @return array The column data as associative array.
+     * @return array<string, mixed> The column data as associative array.
      * @throws DBALException
      */
     public static function prepareColumnData(AbstractPlatform $platform, $column, $primaries = array())
