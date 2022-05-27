@@ -21,6 +21,7 @@
  */
 namespace Crate\DBAL\Schema;
 
+use Crate\DBAL\Platforms\CratePlatform;
 use Doctrine\DBAL\Schema\AbstractSchemaManager;
 use Doctrine\DBAL\Schema\Column;
 use Doctrine\DBAL\Types\Type;
@@ -28,6 +29,13 @@ use Doctrine\DBAL\Schema\Table;
 
 class CrateSchemaManager extends AbstractSchemaManager
 {
+    /**
+     * Holds instance of the database platform used for this schema manager.
+     *
+     * @var CratePlatform
+     */
+    protected $_platform;
+
     /**
      * {@inheritdoc}
      *
@@ -130,6 +138,6 @@ class CrateSchemaManager extends AbstractSchemaManager
         $options['table_options'] = self::flatten($s['settings']);
         $options['table_options']['number_of_replicas'] = $s['number_of_replicas'];
         $options['table_options']['column_policy'] = $s['column_policy'];
-        return new Table($tableName, $columns, $indexes, [], [], $options);
+        return new Table($tableName, $columns, $indexes, [], 0, $options);
     }
 }

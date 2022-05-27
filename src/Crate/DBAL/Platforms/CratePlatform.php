@@ -685,7 +685,7 @@ class CratePlatform extends AbstractPlatform
                 $columnListSql .= ', ' . $this->getIndexDeclarationSQL($index, $definition);
             }
         }
- 
+
         if (isset($options['foreignKeys'])) {
             throw DBALException::notSupported("Create Table: foreign keys");
         }
@@ -774,7 +774,7 @@ class CratePlatform extends AbstractPlatform
 
     /**
      * @param \Doctrine\DBAL\Schema\Column $column The name of the table.
-     * @param array List of primary key column names
+     * @param array $primaries List of primary key column names
      *
      * @return array The column data as associative array.
      * @throws DBALException
@@ -829,7 +829,7 @@ class CratePlatform extends AbstractPlatform
     {
         throw DBALException::notSupported(__METHOD__);
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -837,7 +837,7 @@ class CratePlatform extends AbstractPlatform
     {
         throw DBALException::notSupported(__METHOD__);
     }
-    
+
     /**
      * {@inheritDoc}
      */

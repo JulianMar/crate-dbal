@@ -92,7 +92,7 @@ class Driver implements \Doctrine\DBAL\Driver, VersionAwarePlatformDriver
      */
     public function getDatabase(Connection $conn)
     {
-        return null;
+        return $conn->getDatabase();
     }
 
     /**
